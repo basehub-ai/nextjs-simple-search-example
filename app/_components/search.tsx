@@ -12,11 +12,13 @@ export const Search = ({ _searchKey }: { _searchKey: string }) => {
       <div className="p-2 border border-gray-200 rounded-lg shadow-lg max-w-lg w-full">
         <SearchBox.Input
           placeholder="Search..."
-          className="border border-gray-200 rounded-full px-2 h-8 w-full"
+          className="border border-gray-400 rounded-full px-2 h-8 w-full"
           type="search"
+          autoFocus
+          autoComplete="off"
         />
 
-        <div className="mt-2 border boder-gray-200 p-2 rounded-lg min-h-80">
+        <div className="mt-2 border boder-gray-200 p-2 rounded-lg h-[200px] overflow-auto">
           <SearchBox.Placeholder className="text-sm">
             Start typing to search.
           </SearchBox.Placeholder>
@@ -37,6 +39,9 @@ export const Search = ({ _searchKey }: { _searchKey: string }) => {
                   <SearchBox.HitSnippet
                     fieldPath="_title"
                     components={{
+                      mark: (props) => (
+                        <mark {...props} className="bg-yellow-200 rounded-sm" />
+                      ),
                       container: (props) => (
                         <div
                           {...props}
@@ -49,6 +54,9 @@ export const Search = ({ _searchKey }: { _searchKey: string }) => {
                     fieldPath="body"
                     fallbackFieldPaths={["excerpt"]}
                     components={{
+                      mark: (props) => (
+                        <mark {...props} className="bg-yellow-200 rounded-sm" />
+                      ),
                       container: (props) => (
                         <div {...props} className="text-xs line-clamp-2" />
                       ),
